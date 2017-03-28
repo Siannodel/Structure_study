@@ -1,0 +1,8 @@
+﻿  Structure_study.cpp
+f:\study\myproject\structure_study\structure_study\structure_study.cpp(149): warning C4101: “i”: 未引用的局部变量
+f:\study\myproject\structure_study\structure_study\structure_study.cpp(232): warning C4005: “MAXSIZE”: 宏重定义
+  f:\study\myproject\structure_study\structure_study\structure_study.cpp(176): note: 参见“MAXSIZE”的前一个定义
+f:\study\myproject\structure_study\structure_study\structure_study.cpp(45): warning C4715: “f1”: 不是所有的控件路径都返回值
+f:\study\myproject\structure_study\structure_study\structure_study.cpp(54): warning C4715: “f2”: 不是所有的控件路径都返回值
+  Structure_study.vcxproj -> F:\study\MyProject\Structure_study\Debug\Structure_study.exe
+  Structure_study.vcxproj -> F:\study\MyProject\Structure_study\Debug\Structure_study.pdb (Full PDB)
