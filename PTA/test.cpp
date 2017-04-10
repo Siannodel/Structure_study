@@ -2,14 +2,12 @@
 #include <iostream>
 
 using namespace std;
-
+struct test{
+    int data;
+    test* next;
+};
 int main()
 {
-    cout<<"Holle World"<<endl;
-    for(int i=0;i<10;i++)
-    {
-        cout<<i<<endl;
-    }
-    cin.get();
+    
     return 0;
 }
