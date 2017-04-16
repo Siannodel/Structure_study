@@ -4,5 +4,10 @@
     "clang.completion.enable": true,
     "clang.cxxflags": [
         "-std=c++11","-I/path/to/my/include/directory"
-    ]
+    ],
+    "files.associations": {
+        "initializer_list": "cpp",
+        "utility": "cpp",
+        "algorithm": "cpp"
+    }
 }

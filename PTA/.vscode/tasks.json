@@ -4,6 +4,6 @@
     "version": "0.1.0",
     "command": "g++",
     "isShellCommand": true,
-    "args": ["-g","${workspaceRoot}/09.cpp"],
+    "args": ["-g","${workspaceRoot}/14.cpp"],
     "showOutput": "always"
 }

@@ -11,6 +11,7 @@ typedef struct TreeNode{
 Tree* MyInsert(Tree* _tree, int _data)
 {
 
+    //注意，这个插入 改变的是 _tree这个指针本身，所以必须返回_tree作为新的指针，而不能直接改变参数。
     if(!_tree)
     {
         _tree = (TreeNode*)malloc(sizeof(TreeNode));
