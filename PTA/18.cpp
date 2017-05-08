@@ -10,9 +10,9 @@ int main()
     cin>>N>>M;
     int Mat[101][101];
     //初始化Mat
-    for(int i=0;i<=N;i++)
+    for(int i=1;i<=N;i++)
     {
-        for(int j=0;j<=N;j++)
+        for(int j=1;j<=N;j++)
         {
             if(i==j)
                 Mat[i][j]=0;
@@ -21,7 +21,7 @@ int main()
         }
     }
     //读入数据
-    for(int i=0;i<M;i++)
+    while(M--)
     {
         int v1,v2,route;
         //scanf("%d %d %d",&v1,&v2,&route);
@@ -30,11 +30,11 @@ int main()
     }
     //
     //Floyd
-    for(int i=1;i<=N;i++)
+    for(int n=1;n<=N;n++)
     {
-        for(int j=1;j<=N;j++)
+        for(int i=1;i<=N;i++)
         {
-                for(int n=1;n<=N;n++)
+                for(int j=1;j<=N;j++)
                 {
                     if(Mat[i][j]>Mat[i][n]+Mat[n][j])
                     {
@@ -52,10 +52,10 @@ int main()
         max_long = 0;
         for(int j=1;j<=N;j++)
         {
-            if(i!=j && max_long<Mat[i][j])
+            if(max_long<Mat[i][j])
                 max_long = Mat[i][j];    
         }
-        if(long_result > max_long)
+        if(max_long < long_result)
         {
             long_result = max_long;
             result = i;
