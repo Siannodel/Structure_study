@@ -8,6 +8,8 @@ struct test{
 };
 int main()
 {
-    
-    return 0;
+    char a[3];
+    char b[3];
+    scanf("%s %s",a,b);
+
 }
