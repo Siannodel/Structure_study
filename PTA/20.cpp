@@ -1,68 +1,73 @@
 #include <stdio.h>
 #include <iostream>
-#include <vector>
-#include <utility>
+
 using namespace std;
-#define INF  10000000
 int N,M,S,D;
-int FindMinDist(vector<vector<pair<int,int> > > _map, vector<int> _dist, vector<bool> _flag)
+#define INF  10000000
+struct Route{
+    int dist;
+    int charge;
+};
+int FindMinDist(Route _graph[500][500], int _dist[], bool _book[])
 {
-    int min_v;
-    int min_dist = INF;
-    for(int i=0;i<N;i++)
+    int minV,V;
+    int minDist = INF;
+    for(V=0;V<N;V++)
     {
-        if(_flag[i]==false && _dist[i]<min_dist)
+        if(_book[V]==false && _dist[V]<minDist)
         {
-            min_dist = _dist[i];
-            min_v = i;
+            minDist = _dist[V];
+            minV = V;
         }
     }
-    if(min_dist == INF)
-    {
+    if(minDist<INF)
+        return minV;
+    else
         return -1;
-    }
-    return min_v;
 }
 int main()
 {
     scanf("%d %d %d %d",&N,&M,&S,&D);
-    vector<vector<pair<int,int> > > map(N,vector<pair<int,int> >(N,pair<int,int>(INF,0)));
+    Route graph[500][500];
+    int dist[500];
+    int charge[500];
+    bool book[500];
+    //初始化
+    for(int i=0;i<N;i++)
+    {
+        dist[i] = INF;
+        charge[i] = 0;
+        book[i] = false;
+        for(int j=0;j<N;j++)
+        {
+            graph[i][j].dist = INF;
+        }
+    }
+    //构造图
     for(int i=0;i<M;i++)
     {
+        Route tmp;
         int c1,c2;
-        pair<int,int> route;
-        //cin>>c1>>c2>>route.first>>route.second;
-        scanf("%d %d %d %d",&c1,&c2,&route.first,&route.second);
-        map[c1][c2] = map[c2][c1] = route;
+        scanf("%d %d %d %d",&c1,&c2,&tmp.dist,&tmp.charge);
+        graph[c1][c2] = graph[c2][c1] = tmp;
     }
-    vector<int> min_distance(N,INF);
-    vector<int> charge(N,0);
-    vector<int> path(N,-1);
-    vector<bool> collected(N,false);
-    min_distance[S] = 0;
+    dist[S] = 0;
+    charge[S] = 0;
+    book[S] = true;
+    //
     while(1)
     {
-        int v = FindMinDist(map,min_distance,collected);
-        if(v==-1 || v==D)
+        int V = FindMinDist(graph,dist,book);
+        if(V==-1)
             break;
-        collected[v] = true;
-        for(int i=0;i<N;i++)
+        book[V]=true;
+        for(int W = 0;W<N;W++)
         {
-            if(collected[i]==false && map[v][i].first<INF)
+            if(book[W]==false && graph[V][W].dist<INF)
             {
-                if(min_distance[v]+map[v][i].first<min_distance[i]||
-                (min_distance[v]+map[v][i].first==min_distance[i] &&
-                charge[v]+map[v][i].second<charge[i]))
-                {
-                    min_distance[i] = min_distance[v]+map[v][i].first;
-                    charge[i] = charge[v] + map[v][i].second;
-                    path[i] = v;
-                }
-        
+                
             }
         }
     }
-//cout<<min_distance[D]<<" "<<charge[D];
-printf("%d %d",min_distance[D],charge[D]);
-return 0;
+    return 0;
 }
